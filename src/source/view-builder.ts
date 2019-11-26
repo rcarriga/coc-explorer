@@ -13,11 +13,13 @@ export class SourceRowBuilder {
   }
 
   add(content: string, hlCmd?: Hightlight) {
-    if (hlCmd && content) {
-      const markerID = hlCmd.markerID;
-      content = `<${markerID}|${content}|${markerID}>`;
+    if (content.length === 1 || content.trim()) {
+      if (hlCmd) {
+        const markerID = hlCmd.markerID;
+        content = `<${markerID}|${content}|${markerID}>`;
+      }
+      this.content += content;
     }
-    this.content += content;
   }
 }
 
